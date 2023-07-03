@@ -1,3 +1,9 @@
+ document.getElementById("rock").addEventListener('click',()=>{ game("rock")})
+ document.getElementById("paper").addEventListener('click',()=>{game("paper")})
+ document.getElementById("scissors").addEventListener('click',()=>{game("scissors")})
+
+
+
 function getComputerChoice(){
     const answer=[ "Rock", "Paper", "Scissors"]
     let index= Math.floor(Math.random()*3)
@@ -5,36 +11,29 @@ function getComputerChoice(){
     
 }
 function playRound(playerSelection, computerSelection) {
-    if(playerSelection==="rock"&&computerSelection=="Rock"){
-        return "Empate"
-    } else if(playerSelection==="rock"&&computerSelection=="Paper"){
-        return "Perdiste"
-    } else if(playerSelection==="rock"&&computerSelection==="Scissors"){
-        return "Ganaste"
-    }
-    else if(playerSelection==="paper"&&computerSelection=="Paper"){
-        return "Empate"
-    } else if(playerSelection==="paper"&&computerSelection==="Scissors"){
-        return "Perdiste"
-    }else if(playerSelection==="paper"&&computerSelection=="Rock"){
-        return "Ganaste"
-    } else if(playerSelection==="scissors"&&computerSelection==="Rock"){
-        return "Perdiste"
-    }else if(playerSelection==="scissors"&&computerSelection=="Paper"){
-        return "Ganaste"
-    } else if(playerSelection==="scissors"&&computerSelection==="Scissors"){
-        return "Empate"
-    }else {
-        return "valor invalido"
-    }
+  
+    if (playerSelection.toLowerCase() === computerSelection.toLowerCase()) {
+        return "Empate";
+      } else if (
+        (playerSelection === 'rock' && computerSelection.toLowerCase() === 'scissors') ||
+        (playerSelection === 'paper' && computerSelection.toLowerCase() === 'rock') ||
+        (playerSelection === 'scissors' && computerSelection.toLowerCase() === 'paper')
+      ) {
+        console.log("ganaste")
+        return "¡Ganaste!";
+      } else {
+        console.log("perdiste")
+
+        return "Perdiste. Inténtalo de nuevo.";
+      }
 }
 
-function game() {
+function game(playerChoice) {
     let computerSelection=getComputerChoice()
-    let playerSelection= prompt("Your choice")
-    return    playRound(playerSelection.toLowerCase(), computerSelection);
+    return    playRound(playerChoice,  getComputerChoice());
     
 }
+/*
 let win=0
 let lost=0
 for (let i = 0; i < 5; i++) {
@@ -56,3 +55,4 @@ if(lost<win){
 } else if (lost>win) {
     console.log(`perdiste ${lost} de 5`)
 }
+*/
