@@ -1,6 +1,7 @@
  document.getElementById("rock").addEventListener('click',()=>{ game("rock")})
  document.getElementById("paper").addEventListener('click',()=>{game("paper")})
  document.getElementById("scissors").addEventListener('click',()=>{game("scissors")})
+ const title=document.getElementById('title')
  const buttons = document.querySelectorAll('.option');
  const restart=document.getElementById('restart')
 const result=document.getElementById('result')
@@ -29,16 +30,14 @@ function getComputerChoice(){
         playerScore++
       console.log("Hiciste Click pero ganaste")
 
-        //console.log(playerScore)
       result.innerText=`Player Score: ${playerScore}
       Computer Score ${computerScore}
       `
     } else {
       computerScore++  
-      //console.log(computerScore)
       console.log("Hiciste Click pero perdiste")
       result.innerText=`Player Score: ${playerScore}
-      Computer Score ${computerScore}
+      Computer Score: ${computerScore}
       `
     }
     //console.log(result.innerHTML)
@@ -49,17 +48,16 @@ function getComputerChoice(){
     }
   }
   function game(playerChoice) {
-    //  let computerChoice= getComputerChoice().toLowerCase()
-  //console.log(computerChoice)
+  
   playRound(playerChoice,  getComputerChoice());
   
 }
 
 function endGame() {
   if (playerScore === 5) {
-    result.textContent = '¡Felicidades, ganaste el juego!';
+    title.textContent = '¡Felicidades, ganaste el juego!';
   } else {
-    result.textContent = 'Lo siento, la computadora ganó el juego.';
+    title.textContent = 'Lo siento, la computadora ganó el juego.';
   }
 
   buttons.forEach(button => {
@@ -70,39 +68,13 @@ function endGame() {
 function restartGame() {
   playerScore = 0;
   computerScore = 0;
-  result.textContent = 'Elige una opción:';
   buttons.forEach(button => {
     button.disabled = false;
   });
   restart.style.display = 'none';
+  title.textContent='Elige una opción:'
 }
-/*
-let win=0
-let lost=0
-for (let i = 0; i < 5; i++) {
-    let playerChoice = getComputerChoice().toLowerCase();
-    let computerChoice = getComputerChoice().toLowerCase();
-    let resultText = playRound(playerChoice, computerChoice);
-  
-    if (resultText === "Perdiste. Inténtalo de nuevo.") {
-      lost++;
-    } else if (resultText === "¡Ganaste!") {
-      win++;
-    } else {
-      console.log("Empate");
-    }
-  }
+
 
   
   
-  
-  
-  
-console.log(lost)
-console.log(win)
-if(lost<win){
-    console.log(`ganaste ${win} de 5`)
-} else if (lost>win) {
-    console.log(`perdiste ${lost} de 5`)
-}
-*/
