@@ -21,7 +21,7 @@ function getComputerChoice(){
     if (computerImage.style.display==="inline-block") {
       time=500
     } else{
-      time=1000
+      time=900
     }
     if (answer[index]==="Rock") {
       setTimeout(() => {
