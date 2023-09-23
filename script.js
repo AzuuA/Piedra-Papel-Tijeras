@@ -15,14 +15,9 @@ let time=0
 
 restart.addEventListener('click', restartGame);
 function getComputerChoice(){
-    const answer=[ "Rock", "Paper", "Scissors"]
-    let index= Math.floor(Math.random()*3)
+  const answer=[ "Rock", "Paper", "Scissors"]
+  let index= Math.floor(Math.random()*3)
     console.log(computerImage.style.display)
-    if (computerImage.style.display==="inline-block") {
-      time=450
-    } else{
-      time=850
-    }
     if (answer[index]==="Rock") {
       setTimeout(() => {
         computerImage.style.opacity = '1';
@@ -46,8 +41,8 @@ function getComputerChoice(){
     
   }
   function playRound(playerSelection, computerSelection) {
-  flex.style.display='flex';
-  setTimeout(() => {
+    flex.style.display='flex';
+    setTimeout(() => {
     if (playerSelection === computerSelection.toLowerCase()) {
       console.log("Hiciste Click pero empataste")
 
@@ -84,16 +79,17 @@ function getComputerChoice(){
 
   }
   function game(playerChoice) {
+    if (computerImage.style.display==="inline-block") {
+     time=1000
+    } else{
+      time=400
+    }
    computerImage.style.display='inline-block'
-   if (computerImage.display==="none") {
-    time=0
-  } else{
-    time=5
-  }
+   
    setTimeout(() => {
 
-    computerImage.style.opacity = '0';
-  }, time);
+     computerImage.style.opacity = '0';
+  }, 5);
   playRound(playerChoice,  getComputerChoice());
   
 }
