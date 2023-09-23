@@ -19,9 +19,9 @@ function getComputerChoice(){
     let index= Math.floor(Math.random()*3)
     console.log(computerImage.style.display)
     if (computerImage.style.display==="inline-block") {
-      time=500
+      time=450
     } else{
-      time=900
+      time=850
     }
     if (answer[index]==="Rock") {
       setTimeout(() => {
