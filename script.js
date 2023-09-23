@@ -5,22 +5,54 @@
  const buttons = document.querySelectorAll('.option');
  const restart=document.getElementById('restart')
 const result=document.getElementById('result')
+const computerImage= document.getElementById('computerImage')
+const conteiner=document.querySelector('.conteiner')
+const h3=document.querySelector('h3')
+const flex=document.querySelector('.flex')
 let playerScore=0
 let computerScore=0
-console.log(buttons)
+let time=0
+
 restart.addEventListener('click', restartGame);
 function getComputerChoice(){
     const answer=[ "Rock", "Paper", "Scissors"]
     let index= Math.floor(Math.random()*3)
+    console.log(computerImage.style.display)
+    if (computerImage.style.display==="inline-block") {
+      time=500
+    } else{
+      time=1000
+    }
+    if (answer[index]==="Rock") {
+      setTimeout(() => {
+        computerImage.style.opacity = '1';
+        computerImage.src='./Piiedra1.png'
+      }, time);
+    } else if(answer[index]=="Paper"){
+      setTimeout(() => {
+        computerImage.style.opacity = '1';
+        computerImage.src='./papel1.png'
+      }, time);
+    }
+    else{
+      setTimeout(() => {
+        computerImage.style.opacity = '1';
+        computerImage.src='./tijeras1.png'
+      }, time);
+
+    }
+    
     return answer[index]
     
   }
   function playRound(playerSelection, computerSelection) {
+  flex.style.display='flex';
+  setTimeout(() => {
     if (playerSelection === computerSelection.toLowerCase()) {
       console.log("Hiciste Click pero empataste")
 
       result.innerText=`Player Score: ${playerScore}
-      Computer Score ${computerScore}
+      Computer Score: ${computerScore}
       `
     } else if (
         (playerSelection === 'rock' && computerSelection.toLowerCase() === 'scissors') ||
@@ -31,7 +63,7 @@ function getComputerChoice(){
       console.log("Hiciste Click pero ganaste")
 
       result.innerText=`Player Score: ${playerScore}
-      Computer Score ${computerScore}
+      Computer Score: ${computerScore}
       `
     } else {
       computerScore++  
@@ -40,39 +72,66 @@ function getComputerChoice(){
       Computer Score: ${computerScore}
       `
     }
-    //console.log(result.innerHTML)
+    if (playerScore === 5 || computerScore === 5) {
+      setTimeout(() => {
+        
+        endGame();
+      }, 1200);
+    }
+  }, 1000);
     //console.log(playerScore)
     //console.log(computerScore)
-    if (playerScore === 5 || computerScore === 5) {
-      endGame();
-    }
+
   }
   function game(playerChoice) {
-  
+   computerImage.style.display='inline-block'
+   if (computerImage.display==="none") {
+    time=0
+  } else{
+    time=5
+  }
+   setTimeout(() => {
+
+    computerImage.style.opacity = '0';
+  }, time);
   playRound(playerChoice,  getComputerChoice());
   
 }
 
 function endGame() {
   if (playerScore === 5) {
-    title.textContent = '¡Felicidades, ganaste el juego!';
+    title.textContent = 'Awesome, you won!';
   } else {
-    title.textContent = 'Lo siento, la computadora ganó el juego.';
+    title.textContent = 'Sorry, you lost.';
   }
+  flex.style.display='none';
+  computerImage.src="#";
+  computerImage.style.display='none';
 
   buttons.forEach(button => {
-    button.disabled = true;
+    button.style.display='none';
   });
   restart.style.display='inline-block'
+  
+
 }
 function restartGame() {
-  playerScore = 0;
-  computerScore = 0;
+  playerScore=0;
+  computerScore=0
+  computerImage.style.display='none'
+
   buttons.forEach(button => {
-    button.disabled = false;
+    button.style.display='inline-block';
   });
+  result.innerText=`Player Score: ${playerScore}
+      Computer Score: ${computerScore}
+      `;
   restart.style.display = 'none';
-  title.textContent='Elige una opción:'
+  title.textContent='Select an option:'
+  h3.style.display="inline-block";
+  conteiner.style.display='flex'
+  flex.style.display='flex';
+
 }
 
 
