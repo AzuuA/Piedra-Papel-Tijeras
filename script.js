@@ -1,3 +1,4 @@
+ /* Variables */
  document.getElementById("rock").addEventListener('click',()=>{ game("rock")})
  document.getElementById("paper").addEventListener('click',()=>{game("paper")})
  document.getElementById("scissors").addEventListener('click',()=>{game("scissors")})
@@ -12,8 +13,9 @@ const flex=document.querySelector('.flex')
 let playerScore=0
 let computerScore=0
 let time=0
-
+/* Event Listener */
 restart.addEventListener('click', restartGame);
+/*Funcion para obtener la eleccion de la computadora */
 function getComputerChoice(){
   const answer=[ "Rock", "Paper", "Scissors"]
   let index= Math.floor(Math.random()*3)
@@ -40,6 +42,7 @@ function getComputerChoice(){
     return answer[index]
     
   }
+  /* Funcion para saber el resultado */
   function playRound(playerSelection, computerSelection) {
     flex.style.display='flex';
     setTimeout(() => {
@@ -74,10 +77,11 @@ function getComputerChoice(){
       }, 1200);
     }
   }, 1000);
-    //console.log(playerScore)
-    //console.log(computerScore)
+    
 
   }
+  /* Funcion para jugar una ronda */
+
   function game(playerChoice) {
     if (computerImage.style.display==="inline-block") {
      time=1000
@@ -93,7 +97,7 @@ function getComputerChoice(){
   playRound(playerChoice,  getComputerChoice());
   
 }
-
+/* Funcion para finalizar el juego */
 function endGame() {
   if (playerScore === 5) {
     title.textContent = 'Awesome, you won!';
@@ -111,6 +115,7 @@ function endGame() {
   
 
 }
+/* Funcion para empezar el juego de nuevo */
 function restartGame() {
   playerScore=0;
   computerScore=0

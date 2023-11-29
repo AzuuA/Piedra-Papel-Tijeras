@@ -1,3 +1,4 @@
+/*Generales*/
 @font-face {
   font-family: 'VT323';
   src: url('../Fuentes/VT323/VT323-Regular.ttf') format('truetype');
@@ -22,29 +23,25 @@ body{
     align-items: center;
     
 }
+.flex{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+/*Titulos*/
 #title{
 color: white;
 letter-spacing: 10px;
 font-size: 50px;
 }
-#restart{
-    display: none;
-}
-
-.option{
-    border: 3px solid rgb(255, 0, 0) ;
-    display: inline-block;
-    border-radius: 50%;
-    width: 150px;
-    background-color: rgba(255, 255, 255, 0.164);
-    cursor: pointer;
-}
-.option:hover{
-    background-color: rgba(255, 255, 255, 0.425);
-}
 #result{
     color: rgb(172, 169, 169);
     font-size: 25px;
+}
+/*Boton*/
+#restart{
+    display: none;
 }
 button{
     color: #130707;
@@ -60,10 +57,22 @@ button:hover{
 background-color: rgba(255, 255, 255, 0.788);
 
 }
-#content{
-    width: 80%;
-    display:flex;
-    justify-content: space-evenly;
+h3{
+    font-size: 25px;
+    color: #ebdbff;
+    letter-spacing: 5px;
+}
+/*opciones*/
+.option{
+    border: 3px solid rgb(255, 0, 0) ;
+    display: inline-block;
+    border-radius: 50%;
+    width: 150px;
+    background-color: rgba(255, 255, 255, 0.164);
+    cursor: pointer;
+}
+.option:hover{
+    background-color: rgba(255, 255, 255, 0.425);
 }
 .conteiner{
     background-color: #ffffff5e;
@@ -76,23 +85,59 @@ margin-top: 15px;
     justify-content: center;
     align-items: center;
 }
-h3{
-    font-size: 25px;
-    color: #ebdbff;
-    letter-spacing: 5px;
+#content{
+    width: 80%;
+    display:flex;
+    justify-content: space-evenly;
 }
-.flex{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-   
-    
-}
+/*Computer Image*/
 #computerImage{
     width: 80%;
     display: none;
     opacity: 0; 
   transition: opacity 1s;
+}
+/* Responsive*/
+@media screen and (max-width: 1024px) {
+   
+   
+    .conteiner, .option{
+        width: 7rem;
+        height: 7rem;
+    }
+}
+@media screen and (max-width:525px) {
+    #title{
+        font-size: 2.5rem;
+letter-spacing: 7px;
+
+    }
+}
+@media screen and (max-width:425px) {
+    h3{
+        font-size: 1.3rem;
+
+    }
+    #title{
+        font-size: 1.5rem;
+    }
+    .conteiner, .option{
+        width: 6rem;
+        height: 6rem;
+    }
+}
+@media screen and (max-width:320px) {
+    h3{
+        font-size: 1.2rem;
+
+    }
+    #title{
+        font-size: 1.2rem;
+letter-spacing: 7px;
+
+    }
+    .conteiner, .option{
+        width: 4.5rem;
+        height: 4.5rem;
+    }
 }
